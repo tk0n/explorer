@@ -21,14 +21,14 @@
 }
 
 html, body {
-  color: #544835;
+  color: #222;
   font-family: 'Roboto', 'Ubuntu', sans-serif;
   height: 100%;
   /* The html and body elements cannot have any padding or margin. */
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-  color: #544835;
+  color: #222;
   font-family: 'Roboto', 'Ubuntu', sans-serif;
 }
 
@@ -41,7 +41,7 @@ a, a:visited, a:focus {
 }
 
 a:hover {
-  color: #f57c00;
+  color: #f89406;
 }
 
 /* Bootstrap fix for ui.bootstrap */
@@ -53,7 +53,7 @@ a:hover {
 
 .dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus {
   color: white;
-  background-color: #655740;
+  background-color: #080808;
 }
 
 /* Styling for the ngProgress itself */
@@ -191,10 +191,10 @@ a:hover {
 
 .navbar-default .navbar-toggle .icon-bar { background-color: white; }
 
-.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {background-color: #544835;}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {background-color: #222;}
 
 .navbar-default {
-  background-color: #544835;
+  background-color: #222;
   margin: 0;
   border: 0;
 }
@@ -210,24 +210,24 @@ a:hover {
 }
 
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus {
-  background-color: #3b3225;
+  background-color: #080808;
   color: white;
 }
 
 .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>.active>a:hover {
-  background-color: #655740;
+  background-color: #080808;
   color: white;
 }
 
 .navbar-default .navbar-nav>li>a:focus {
-  background-color: #3b3225;
+  background-color: #080808;
   color: white;
 }
 
 .navbar-default .navbar-nav>.open>a,
 .navbar-default .navbar-nav>.open>a:hover,
 .navbar-default .navbar-nav>.open>a:focus {
-  background-color: #655740;
+  background-color: #080808;
   color: white;
 }
 
@@ -242,7 +242,7 @@ a:hover {
     margin-bottom: 1px;
   }
   .navbar-default .navbar-nav .open .dropdown-menu>li>a {
-    background-color: #655740;
+    background-color: #080808;
     color: white;
   }
   .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover {
@@ -275,7 +275,7 @@ a:hover {
 }
 
 .nav-tabs>li>a {
-  color: #544835;
+  color: #222;
 }
 
 .nav-tabs.nav-justified>.active>a,
@@ -382,7 +382,7 @@ a:hover {
   float: left;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
-  background-color: #655740;
+  background-color: #080808;
   border-radius: 3px;
   margin-left: 10px;
   margin-top: 10px;
@@ -453,7 +453,7 @@ a:hover {
 }
 
 .block-id {
-  background-color: #544835;
+  background-color: #222;
   border: 3px solid white;
   margin: 0 auto;
   width: 165px;
@@ -598,7 +598,7 @@ a:hover {
 }
 
 .txvalues-success {
-  background-color: #7CB342;
+  background-color: #51a351;
 }
 
 .txvalues-danger {
@@ -619,7 +619,7 @@ a:hover {
 
 /* Set the fixed height of the footer here */
 #footer {
-  background-color: #544835;
+  background-color: #222;
   color: white;
   height: 48px;
   overflow: hidden;
@@ -641,7 +641,7 @@ a:hover {
 }
 
 #footer .col-right a {
-  color: #655740;
+  color: #ccc;
   margin-left: 10px;
 }
 
@@ -840,7 +840,7 @@ a:hover {
 }
 
 .tx-id {
-  background-color: #544835;
+  background-color: #222;
   border: 3px solid white;
   margin: 0 auto;
   width: 165px;
@@ -1014,7 +1014,7 @@ a.v_highlight_more {
 /* Sort Order */
 
 a.sort-order {
-  color: #544835;
+  color: #222;
 }
 
 a.sort-order:focus, .sort-order:hover {
