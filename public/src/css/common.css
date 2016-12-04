@@ -21,14 +21,14 @@
 }
 
 html, body {
-  color: #222;
+  color: #2f3336;
   font-family: 'Roboto', 'Ubuntu', sans-serif;
   height: 100%;
   /* The html and body elements cannot have any padding or margin. */
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-  color: #222;
+  color: #2f3336;
   font-family: 'Roboto', 'Ubuntu', sans-serif;
 }
 
@@ -191,10 +191,10 @@ a:hover {
 
 .navbar-default .navbar-toggle .icon-bar { background-color: white; }
 
-.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {background-color: #222;}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {background-color: #2f3336;}
 
 .navbar-default {
-  background-color: #222;
+  background-color: #2f3336;
   margin: 0;
   border: 0;
 }
@@ -275,7 +275,7 @@ a:hover {
 }
 
 .nav-tabs>li>a {
-  color: #222;
+  color: #2f3336;
 }
 
 .nav-tabs.nav-justified>.active>a,
@@ -453,7 +453,7 @@ a:hover {
 }
 
 .block-id {
-  background-color: #222;
+  background-color: #2f3336;
   border: 3px solid white;
   margin: 0 auto;
   width: 165px;
@@ -619,7 +619,7 @@ a:hover {
 
 /* Set the fixed height of the footer here */
 #footer {
-  background-color: #222;
+  background-color: #2f3336;
   color: white;
   height: 48px;
   overflow: hidden;
@@ -840,7 +840,7 @@ a:hover {
 }
 
 .tx-id {
-  background-color: #222;
+  background-color: #2f3336;
   border: 3px solid white;
   margin: 0 auto;
   width: 165px;
@@ -1014,7 +1014,7 @@ a.v_highlight_more {
 /* Sort Order */
 
 a.sort-order {
-  color: #222;
+  color: #2f3336;
 }
 
 a.sort-order:focus, .sort-order:hover {
