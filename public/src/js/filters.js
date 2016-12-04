@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lisk_explorer')
+angular.module('ark_explorer')
   .filter('approval', function () {
       return function (votes) {
           if (isNaN(votes)) {
@@ -26,7 +26,7 @@ angular.module('lisk_explorer')
           }
       };
   })
-  .filter('lisk', function () {
+  .filter('ark', function () {
       return function (amount) {
           if (isNaN(amount)) {
               return (0).toFixed(8);
@@ -67,9 +67,9 @@ angular.module('lisk_explorer')
           return input.slice(start);
       };
   })
-  .filter('supply', function (liskFilter) {
+  .filter('supply', function (arkFilter) {
       return function (amount) {
-          return ((liskFilter(amount) / 100000000) * 100).toFixed(2);
+          return ((arkFilter(amount) / 100000000) * 100).toFixed(2);
       };
   })
   .filter('timeAgo', function (epochStampFilter) {

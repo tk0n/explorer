@@ -1,6 +1,6 @@
-# Lisk Blockchain Explorer
+# Ark Blockchain Explorer
 
-Lisk blockchain explorer version 0.3. Works with Lisk wallet API. Uses Redis for caching data and Freegeoip for IP geo-location.
+Ark blockchain explorer version 0.1. Works with Ark wallet API. Uses Redis for caching data and Freegeoip for IP geo-location.
 
 ## Prerequisites
 
@@ -61,9 +61,9 @@ Example:
             "host": "0.0.0.0",
             "port": 80
         },
-        "lisk" : {
+        "ark" : {
             "host" : "127.0.0.1",
-            "port" : 8000
+            "port" : 4000
         },
         "freegeoip" : {
             "host" : "127.0.0.1",
@@ -83,13 +83,13 @@ Example:
         "enableExchange" : true,
         "updateExchangeInterval" : 900000,
         "btcusdExchange" : "bitfinex",
-        "liskbtcExchange" : "poloniex"
+        "arkbtcExchange" : "poloniex"
     }
 }
 ```
 
 * `cacheTTL` - time to live cache in redis.
-* `fixedPoint` - fixed point number of Lisk (10^8).
+* `fixedPoint` - fixed point number of Ark (10^8).
 * `enableCandles` - enable or disable updating of candlestick data.
 * `updateCandlesInterval` - time to update candlestick data.
 * `enableOrders` - enable or disable updating of order book data.
@@ -97,7 +97,7 @@ Example:
 * `enableExchange` - enable or disable exchange currency courses.
 * `updateExchangeInterval` - time to update exchange currency courses.
 * `btcusdExchange` - default is bitfinex, alternatives are: bitstamp & btce.
-* `liskbtcExchange` - default is poloniex.
+* `arkbtcExchange` - default is poloniex.
 
 ## Build
 
@@ -161,17 +161,24 @@ Ports for both mode can be found in `config.json`
 
 ## Top Accounts
 
-To enable Top Accounts functionality, start your lisk node _(not the explorer)_ using the following command:
+To enable Top Accounts functionality, start your ark node _(not the explorer)_ using the following command:
 
 ```
 TOP=true node app.js
 ```
 
+## Authors
+- Guillaume Verbal <doweig@ark.io>
+- Isabella Dell <isabella@lisk.io>
+- Oliver Beddows <oliver@lisk.io>
+- Boris Povod <boris@crypti.me>
+
 ## License
 
 The MIT License (MIT)
 
-Copyright (c) 2016 Lisk  
+Copyright (c) 2016 Ark
+Copyright (c) 2016 Lisk
 Copyright (c) 2015 Crypti
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:

@@ -34,7 +34,7 @@ module.exports = function (config) {
                 }
             ]
         },
-        LISKBTC : {
+        ARKBTC : {
             poloniex : [
                 'Poloniex',
                 'https://poloniex.com/public?command=returnTicker',
@@ -58,13 +58,13 @@ module.exports = function (config) {
         config.btcusdExchange = exchanges.BTCUSD.bitfinex;
     }
 
-    if (exchanges.LISKBTC.hasOwnProperty(config.liskbtcExchange)) {
-        config.liskbtcExchange = exchanges.LISKBTC[config.liskbtcExchange];
-        console.log('Exchange:', util.format('Configured %s as LISK/BTC exchange', config.liskbtcExchange[0]));
+    if (exchanges.ARKBTC.hasOwnProperty(config.arkbtcExchange)) {
+        config.arkbtcExchange = exchanges.ARKBTC[config.arkbtcExchange];
+        console.log('Exchange:', util.format('Configured %s as ARK/BTC exchange', config.arkbtcExchange[0]));
     } else {
-        console.log('Exchange:', 'Warning: Unrecognized LISK/BTC exchange!');
+        console.log('Exchange:', 'Warning: Unrecognized ARK/BTC exchange!');
         console.log('Exchange:', 'Defaulting to Poloniex...');
-        config.liskbtcExchange = exchanges.LISKBTC.poloniex;
+        config.arkbtcExchange = exchanges.ARKBTC.poloniex;
     }
 
     var requestTicker = function (type, options, cb) {
@@ -86,8 +86,8 @@ module.exports = function (config) {
         getPriceTicker: function (type, cb) {
             if (type == 'BTCUSD') {
                 return requestTicker(type, config.btcusdExchange, cb);
-            } else if (type == 'LISKBTC') {
-                return requestTicker(type, config.liskbtcExchange, cb);
+            } else if (type == 'ARKBTC') {
+                return requestTicker(type, config.arkbtcExchange, cb);
             } else {
                 return cb(util.format('Unrecognized \'%s\' ticker type!', type));
             }

@@ -301,7 +301,7 @@ ActivityGraph.prototype.addBlockTxs = function (block) {
     }
 };
 
-angular.module('lisk_explorer.tools').factory('activityGraph',
+angular.module('ark_explorer.tools').factory('activityGraph',
   function ($socket) {
       return function ($scope) {
           var activityGraph = new ActivityGraph(),

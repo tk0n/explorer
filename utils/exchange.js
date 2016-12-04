@@ -3,12 +3,12 @@
 var async = require('async');
 
 module.exports = function (config) {
-    this.BTCUSD = this.LISKBTC = '~';
+    this.BTCUSD = this.ARKBTC = '~';
 
     this.loadRates = function () {
         async.parallel([
             function (cb) { exchange.loadBTCUSD(cb); },
-            function (cb) { exchange.loadLISKBTC(cb); }
+            function (cb) { exchange.loadARKBTC(cb); }
         ]);
     };
 
@@ -28,15 +28,15 @@ module.exports = function (config) {
         }.bind(this));
     };
 
-    this.loadLISKBTC = function (cb) {
-        console.log('Exchange:', 'Loading LISK/BTC curs from exchange...');
-        getLISKBTC(function (err, result) {
+    this.loadARKBTC = function (cb) {
+        console.log('Exchange:', 'Loading ARK/BTC curs from exchange...');
+        getARKBTC(function (err, result) {
             if (err) {
-                console.log('Exchange:', 'Loading BTC/LISK failed...');
+                console.log('Exchange:', 'Loading BTC/ARK failed...');
                 console.log('Error:', err);
             } else if (result !== '~') {
-                this.LISKBTC = result;
-                console.log('Exchange:', 'BTC/LISK loaded...', result);
+                this.ARKBTC = result;
+                console.log('Exchange:', 'BTC/ARK loaded...', result);
             }
             if (cb) {
                 return cb(err, result);
@@ -44,9 +44,9 @@ module.exports = function (config) {
         }.bind(this));
     };
 
-    this.LISKUSD = function (lisk) {
-        if (lisk && this.LISKBTC !== '~' && this.BTCUSD !== '~') {
-            return (parseFloat(lisk) * parseFloat(this.LISKBTC) * parseFloat(this.BTCUSD)).toFixed(3);
+    this.ARKUSD = function (ark) {
+        if (ark && this.ARKBTC !== '~' && this.BTCUSD !== '~') {
+            return (parseFloat(ark) * parseFloat(this.ARKBTC) * parseFloat(this.BTCUSD)).toFixed(3);
         } else {
             return 0;
         }
@@ -74,13 +74,13 @@ module.exports = function (config) {
         }
     };
 
-    var getLISKBTC = function (cb) {
+    var getARKBTC = function (cb) {
         if (config.enableExchange) {
-            api.getPriceTicker('LISKBTC', function (err, result) {
+            api.getPriceTicker('ARKBTC', function (err, result) {
                 return cb(err, result);
             });
         } else {
-            console.log('Exchange:', 'Loading LISK/BTC disabled...');
+            console.log('Exchange:', 'Loading ARK/BTC disabled...');
             return cb(null, '~');
         }
     };

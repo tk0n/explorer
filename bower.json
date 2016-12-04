@@ -1,5 +1,16 @@
+
+
+
+
+
+
+
+
+
+
+
 {
-  "name": "lisk-explorer",
+  "name": "ark-explorer",
   "version": "0.3.0",
   "dependencies": {
     "angular": "~1.5.8",

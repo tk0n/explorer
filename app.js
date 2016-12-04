@@ -19,7 +19,7 @@ app.orders = new utils.orders(config, client);
 
 app.set('version', '0.3');
 app.set('strict routing', true);
-app.set('lisk address', 'http://' + config.lisk.host + ':' + config.lisk.port);
+app.set('ark address', 'http://' + config.ark.host + ':' + config.ark.port);
 app.set('freegeoip address', 'http://' + config.freegeoip.host + ':' + config.freegeoip.port);
 app.set('fixed point', config.fixedPoint);
 app.set('exchange enabled', config.enableExchange);
@@ -144,13 +144,13 @@ app.get('*', function (req, res, next) {
 
 async.parallel([
     function (cb) { app.exchange.loadBTCUSD(cb); },
-    function (cb) { app.exchange.loadLISKBTC(cb); }
+    function (cb) { app.exchange.loadARKBTC(cb); }
 ], function (err) {
     var server = app.listen(app.get('port'), app.get('host'), function (err) {
         if (err) {
             console.log(err);
         } else {
-            console.log('Lisk started at ' + app.get('host') + ':' + app.get('port'));
+            console.log('Ark started at ' + app.get('host') + ':' + app.get('port'));
 
             var io = require('socket.io').listen(server);
             require('./sockets')(app, io);

@@ -96,7 +96,7 @@ var DelegateMonitor = function ($scope, forgingMonitor) {
     };
 };
 
-angular.module('lisk_explorer.tools').factory('delegateMonitor',
+angular.module('ark_explorer.tools').factory('delegateMonitor',
   function ($socket, forgingMonitor) {
       return function ($scope) {
           var delegateMonitor = new DelegateMonitor($scope, forgingMonitor),

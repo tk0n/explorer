@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lisk_explorer.tools').service('forgingStatus',
+angular.module('ark_explorer.tools').service('forgingStatus',
   function ($rootScope, epochStampFilter, roundFilter) {
       return function (delegate) {
           var status = { updatedAt: delegate.blocksAt },

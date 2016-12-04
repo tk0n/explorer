@@ -17,15 +17,15 @@ var Header = function ($rootScope) {
     this.updatePriceTicker = function (res) {
         if (res.success) {
             $rootScope.btc_usd  = res.btc_usd;
-            $rootScope.lisk_btc = res.lisk_btc;
-            $rootScope.lisk_usd = res.lisk_usd;
+            $rootScope.ark_btc = res.ark_btc;
+            $rootScope.ark_usd = res.ark_usd;
         } else {
-            $rootScope.btc_usd = $rootScope.lisk_btc = $rootScope.lisk_usd = 0.0;
+            $rootScope.btc_usd = $rootScope.ark_btc = $rootScope.ark_usd = 0.0;
         }
     };
 };
 
-angular.module('lisk_explorer.system').factory('header',
+angular.module('ark_explorer.system').factory('header',
   function ($rootScope, $socket) {
       return function ($scope) {
           var header = new Header($rootScope),
