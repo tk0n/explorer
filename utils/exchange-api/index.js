@@ -42,7 +42,7 @@ module.exports = function (config) {
                     if (res.error) {
                         return cb(res.error);
                     } else {
-                        return cb(null, res.BTC_LSK.last);
+                        return cb(null, res.BTC_ARK.last);
                     }
                 }
             ]
