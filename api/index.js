@@ -12,10 +12,10 @@ var accounts = require('./accounts.js'),
 module.exports = function (app) {
     accounts(app);
     blocks(app);
-    candles(app);
+    // candles(app); // Market Watcher API
     common(app);
     delegates(app);
-    orders(app);
+    // orders(app); // Market Watcher API
     statistics(app);
     transactions(app);
 };
