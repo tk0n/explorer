@@ -203,10 +203,7 @@ a:hover {
   color: white;
   font-family: 'Roboto', 'Ubuntu', sans-serif;
   margin-left: 1px;
-  padding-left: 25px;
-  padding-right: 25px;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding: 30px 8px;
 }
 
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus {
@@ -386,7 +383,7 @@ a:hover {
   border-radius: 3px;
   margin-left: 10px;
   margin-top: 19px;
-  min-width: 389.375px;
+  min-width: 320px;
   min-height: 20px;
   padding: 10px 0;
   font-size: 12px;
