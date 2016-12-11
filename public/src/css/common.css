@@ -164,6 +164,10 @@ a:hover {
   background-color: #E8E8E9;
 }
 
+.table-responsive {
+  font-size: 11px;
+}
+
 #header {
   margin-left: 21px;
   margin-right: 21px;
