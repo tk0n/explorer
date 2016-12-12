@@ -84,7 +84,7 @@
               <div class="pull-left total-forged">
                 <p class="small-title">Total Forged <span class="text-muted">(ARK)</span></p>
                 <p class="big-details">
-                  <span class="lisk">{{totalForged || 0 | ark}}</span>
+                  <span class="ark">{{totalForged || 0 | ark}}</span>
                 </p>
                 <p class="text-muted total-active">between {{totalActive || 0 }} active delegates</p>
               </div>
@@ -100,7 +100,7 @@
                   <a data-ng-href="/address/{{bestForger.address}}" data-ng-switch-when="true" target="_new">{{bestForger.username}}</a>
                   <span class="text-muted" data-ng-switch-when="false">N/A</span>
                 </p>
-                <p class="text-muted lisk">{{bestForger.forged || 0 | lisk}} LSK forged</p>
+                <p class="text-muted ark">{{bestForger.forged || 0 | ark}} ARK forged</p>
                 <p class="text-muted time-since">since registration</p>
               </div>
             </div>

@@ -4,7 +4,7 @@ Ark blockchain explorer version 0.1. Works with Ark wallet API. Uses Redis for c
 
 ## Prerequisites
 
- * Nodejs v4.0.0 or higher (https://nodejs.org/) 
+ * Nodejs v4.0.0 or higher (https://nodejs.org/)
  * Redis (http://redis.io)
  * Freegeoip (https://github.com/fiorix/freegeoip)
  * Bower (http://bower.io/)
