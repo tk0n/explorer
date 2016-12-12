@@ -107,7 +107,6 @@ var MarketWatcher = function ($q, $http, $scope) {
     });
 };
 
-angular.module('ark_explorer.tools').factory('marketWatcher',
   function ($q, $http, $socket) {
       return function ($scope) {
           var marketWatcher = new MarketWatcher($q, $http, $scope),

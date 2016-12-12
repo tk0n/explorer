@@ -19,21 +19,24 @@ angular.module('ark_explorer.tools').service('forgingStatus',
               status.lastBlock = null;
           }
 
-          if (!status.updatedAt) {
-              // Unprocessed
-              status.code = 5;
-          } else if (!status.blockAt) {
-              // Awaiting Status
-              status.code = 4;
-          } else if (statusAge > 9) {
-              // Stale Status
-              status.code = 3;
-          } else if (status.awaitingSlot <= 1) {
-              // Forging
-              status.code = 0;
-          } else if (status.awaitingSlot === 2) {
-              // Awaiting Slot
+          if (forceNotForging && status.awaitingSlot > 1) {
+              // Missed block in current and last round = not forging
+              status.code = 2;
+          } else if (forceNotForging && status.awaitingSlot === 1) {
+              // Missed block in current round
               status.code = 1;
+          } else if (!status.blockAt || !status.updatedAt) {
+              // Awaiting status or unprocessed
+              status.code = 5;
+          } else if (status.awaitingSlot === 0) {
+              // Forged block in current round
+              status.code = 0;
+          } else if (status.awaitingSlot === 1) {
+              // Awaiting slot, but forged in last round
+              status.code = 3;
+          } else if (status.awaitingSlot === 2) {
+              // Awaiting slot, but missed block in last round
+              status.code = 4;
           } else {
               // Not Forging
               status.code = 2;

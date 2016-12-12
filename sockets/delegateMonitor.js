@@ -3,7 +3,12 @@
 var api = require('../lib/api'),
     moment = require('moment'),
     _ = require('underscore'),
+<<<<<<< HEAD
     async = require('async');
+=======
+    async = require('async'),
+    request = require('request');
+>>>>>>> development
 
 module.exports = function (app, connectionHandler, socket) {
     var delegates  = new api.delegates(app),
@@ -16,7 +21,12 @@ module.exports = function (app, connectionHandler, socket) {
         'getLastBlock'     : false,
         'getRegistrations' : false,
         'getVotes'         : false,
+<<<<<<< HEAD
         'getLastBlocks'    : false
+=======
+        'getLastBlocks'    : false,
+        'getNextForgers'   : false
+>>>>>>> development
     };
 
     this.onInit = function () {
@@ -26,22 +36,47 @@ module.exports = function (app, connectionHandler, socket) {
             getActive,
             getLastBlock,
             getRegistrations,
+<<<<<<< HEAD
             getVotes
+=======
+            getVotes,
+            getNextForgers
+>>>>>>> development
         ],
         function (err, res) {
             if (err) {
                 log('Error retrieving: ' + err);
             } else {
+<<<<<<< HEAD
                 data.active        = updateActive(res[0]);
                 data.lastBlock     = res[1];
                 data.registrations = res[2];
                 data.votes         = res[3];
+=======
+                data.active         = updateActive(res[0], res[4], res[1]);
+                data.lastBlock      = res[1];
+                data.registrations  = res[2];
+                data.votes          = res[3];
+                data.nextForgers    = res[4].delegates.slice(0, 10);
+
+                _.each(data.nextForgers, function (publicKey, index) {
+                    var existing = findActiveByPublicKey(publicKey);
+                    data.nextForgers[index] = existing;
+                });
+>>>>>>> development
 
                 log('Emitting new data');
                 socket.emit('data', data);
 
+<<<<<<< HEAD
                 if (interval == null) {
                     interval = setInterval(emitData, 10000);
+=======
+                getLastBlocks(data.active, true);
+
+                if (interval == null) {
+                    interval = setInterval(emitData, 5000);
+>>>>>>> development
                 }
             }
         }.bind(this));
@@ -80,13 +115,47 @@ module.exports = function (app, connectionHandler, socket) {
         });
     };
 
+<<<<<<< HEAD
     var updateActive = function (results) {
+=======
+    var findActiveByPublicKey = function (publicKey) {
+        return _.find(data.active.delegates, function (d) {
+            return d.publicKey === publicKey;
+        });
+    };
+
+    var findActiveByBlock = function (block) {
+        return _.find(data.active.delegates, function (d) {
+            return d.publicKey === block.generatorPublicKey;
+        });
+    };
+
+    var updateActive = function (results, nextForgers, lastBlock) {
+        // Calculate list of delegates that should forge in current round
+        var roundDelegates = getRoundDelegates(nextForgers.delegates, lastBlock.block.height)
+
+>>>>>>> development
         if (!data.active || !data.active.delegates) {
             return results;
         } else {
             _.each(results.delegates, function (delegate) {
                 var existing = findActive(delegate);
 
+<<<<<<< HEAD
+=======
+                if (existing) {
+                    // Update delegate with forging time
+                    delegate.forgingTime = nextForgers.delegates.indexOf(existing.publicKey) * 10;
+
+                    // Update delegate with info if should forge in current round
+                    if (roundDelegates.indexOf(existing.publicKey) === -1) {
+                        delegate.isRoundDelegate = false;
+                    } else {
+                        delegate.isRoundDelegate = true;
+                    }
+                }
+
+>>>>>>> development
                 if (existing && existing.blocks && existing.blocksAt) {
                     delegate.blocks = existing.blocks;
                     delegate.blocksAt = existing.blocksAt;
@@ -130,11 +199,29 @@ module.exports = function (app, connectionHandler, socket) {
         );
     };
 
+<<<<<<< HEAD
     var getLastBlocks = function (results) {
+=======
+    var getNextForgers = function (cb) {
+        if (running.getNextForgers) {
+            return cb('getNextForgers (already running)');
+        }
+        running.getNextForgers = true;
+        delegates.getNextForgers(
+            function (res) { running.getNextForgers = false; cb('NextForgers'); },
+            function (res) { running.getNextForgers = false; cb(null, res); }
+        );
+    };
+
+    var getLastBlocks = function (results, init) {
+        var limit = init ? 100 : 2;
+
+>>>>>>> development
         if (running.getLastBlocks) {
             return log('getLastBlocks (already running)');
         }
         running.getLastBlocks = true;
+<<<<<<< HEAD
         async.eachSeries(results.delegates, function (delegate, callback) {
             if (delegate.blocksAt) {
                 var minutesAgo = moment().diff(delegate.blocksAt, 'minutes');
@@ -171,6 +258,86 @@ module.exports = function (app, connectionHandler, socket) {
                 }
             );
         }, function (err) {
+=======
+
+        async.waterfall([
+            function (callback) {
+                request.get({
+                    url : app.get('lisk address') + '/api/blocks?orderBy=height:desc&limit=' + limit,
+                    json : true
+                }, function (err, response, body) {
+                    if (err || response.statusCode !== 200) {
+                        return error({ success : false, error : (err || 'Response was unsuccessful') });
+                    } else if (body.success === true) {
+                        return callback(null, { blocks: body.blocks });
+                    } else {
+                        return error({ success : false, error : body.error });
+                    }
+                });
+            },
+            function (result, callback) {
+                    async.eachSeries(result.blocks, function (b, cb) {
+                       var existing = findActiveByBlock(b);
+
+                        if (existing) {
+                            if (!existing.blocks || existing.blocks[0].timestamp < b.timestamp) {
+                                existing.blocks = [];
+                                existing.blocks.push(b);
+                                existing.blocksAt = moment();
+                                emitDelegate(existing);
+                            }
+                        }
+
+                        if (interval) {
+                            cb(null);
+                        } else {
+                            cb('Monitor closed');
+                        }
+                    }, function (err) {
+                        if (err) {
+                            cb (err, result);
+                        }
+                        callback (null, result);
+                    });
+            },
+            function (result, callback) {
+                async.eachSeries(results.delegates, function (delegate, cb) {
+                    if (delegate.blocks) {
+                            return cb(null);
+                    }
+                    delegates.getLastBlocks(
+                        { publicKey : delegate.publicKey,
+                          limit : 1 },
+                        function (res) {
+                            log('Error retrieving last blocks for: ' + delegateName(delegate));
+                            callback(res.error);
+                        },
+                        function (res) {
+                            var existing = findActive(delegate);
+
+                            if (existing) {
+                                existing.blocks = res.blocks;
+                                existing.blocksAt = moment();
+                            }
+
+                            emitDelegate(existing);
+
+                            if (interval) {
+                                cb(null);
+                            } else {
+                                callback('Monitor closed');
+                            }
+                        }
+                    );
+                }, function (err) {
+                    if (err) {
+                        cb (err, result);
+                    }
+                    callback (null, result);
+                });
+            }
+        ], function (err, callback) {
+>>>>>>> development
             if (err) {
                 log('Error retrieving LastBlocks: ' + err);
             }
@@ -178,6 +345,23 @@ module.exports = function (app, connectionHandler, socket) {
         });
     };
 
+<<<<<<< HEAD
+=======
+    var getRound = function (height) {
+        return Math.floor(height / 101) + (height % 101 > 0 ? 1 : 0);
+    }
+
+    var getRoundDelegates = function (delegates, height) {
+       var currentRound = getRound (height);
+
+       var filtered = delegates.filter(function (delegate, index) {
+            return currentRound === getRound (height + index + 1);
+       });
+       
+       return filtered;
+    }
+
+>>>>>>> development
     var delegateName = function (delegate) {
         return delegate.username + '[' + delegate.rate + ']';
     };
@@ -189,21 +373,43 @@ module.exports = function (app, connectionHandler, socket) {
             getActive,
             getLastBlock,
             getRegistrations,
+<<<<<<< HEAD
             getVotes
+=======
+            getVotes,
+            getNextForgers
+>>>>>>> development
         ],
         function (err, res) {
             if (err) {
                 log('Error retrieving: ' + err);
             } else {
+<<<<<<< HEAD
                 thisData.active        = updateActive(res[0]);
                 thisData.lastBlock     = res[1];
                 thisData.registrations = res[2];
                 thisData.votes         = res[3];
+=======
+                thisData.active         = updateActive(res[0], res[4], res[1]);
+                thisData.lastBlock      = res[1];
+                thisData.registrations  = res[2];
+                thisData.votes          = res[3];
+                thisData.nextForgers    = res[4].delegates.slice(0, 10);
+
+                _.each(thisData.nextForgers, function (publicKey, index) {
+                    var existing = findActiveByPublicKey(publicKey);
+                    thisData.nextForgers[index] = existing;
+                });
+>>>>>>> development
 
                 data = thisData;
                 log('Emitting data');
                 socket.emit('data', thisData);
+<<<<<<< HEAD
                 getLastBlocks(thisData.active);
+=======
+                getLastBlocks(thisData.active, false);
+>>>>>>> development
             }
         }.bind(this));
     };
