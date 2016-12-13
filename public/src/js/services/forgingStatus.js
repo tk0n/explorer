@@ -2,7 +2,7 @@
 
 angular.module('ark_explorer.tools').service('forgingStatus',
   function ($rootScope, epochStampFilter, roundFilter) {
-      return function (delegate) {
+      return function (delegate, forceNotForging) {
           var status = { updatedAt: delegate.blocksAt },
               statusAge = 0, blockAge = 0;
 
