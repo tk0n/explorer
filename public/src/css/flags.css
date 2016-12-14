@@ -10,7 +10,7 @@
 .flag.flag- {
   height: 23px;
   line-height: 23px;
-  background-color: #5f696e;
+  background-color: inherit;
   opacity: 0.1;
 }
 
