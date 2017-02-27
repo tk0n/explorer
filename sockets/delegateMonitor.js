@@ -115,7 +115,7 @@ module.exports = function (app, connectionHandler, socket) {
 
                 if (existing) {
                     // Update delegate with forging time
-                    delegate.forgingTime = nextForgers.delegates.indexOf(existing.publicKey) * 10;
+                    delegate.forgingTime = nextForgers.delegates.indexOf(existing.publicKey) * 8;
 
                     // Update delegate with info if should forge in current round
                     if (roundDelegates.indexOf(existing.publicKey) === -1) {
