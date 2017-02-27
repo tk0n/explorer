@@ -207,7 +207,7 @@ module.exports = function (app, connectionHandler, socket) {
                     var existing = findActiveByBlock(b);
 
                     if (existing) {
-                        if (!existing.blocks || existing.blocks[0].timestamp < b.timestamp) {
+                        if (!existing.blocks || !existing.blocks.length || existing.blocks[0].timestamp < b.timestamp) {
                             existing.blocks = [];
                             existing.blocks.push(b);
                             existing.blocksAt = moment();
