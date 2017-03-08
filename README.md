@@ -170,6 +170,7 @@ TOP=true node app.js
 
 ## Authors
 - Guillaume Verbal <doweig@ark.io>
+- 4miners MQ
 - Isabella Dell <isabella@lisk.io>
 - Oliver Beddows <oliver@lisk.io>
 - Boris Povod <boris@crypti.me>
