@@ -25,7 +25,7 @@ angular.module('ark_explorer.tools').service('forgingStatus',
           } else if (forceNotForging && status.awaitingSlot === 1) {
               // Missed block in current round
               status.code = 1;
-          } else if (!status.blockAt || !status.updatedAt) {
+          } else if (!status.blockAt && !status.updatedAt) {
               // Awaiting status or unprocessed
               status.code = 5;
           } else if (status.awaitingSlot === 0) {
