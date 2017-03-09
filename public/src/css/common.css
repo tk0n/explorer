@@ -164,9 +164,9 @@ a:hover {
   background-color: #E8E8E9;
 }
 
-.table-responsive {
+/*.table-responsive {
   font-size: 11px;
-}
+}*/
 
 #header {
   margin-left: 21px;
@@ -1044,4 +1044,11 @@ a.sort-order span.reverse:after {
     font-weight: 300;
     line-height: 1.2;
     margin-bottom: 20px;
+}
+
+.tx-id-list {
+  max-width: 380px;
+}
+.tx-id-votes {
+  max-width: 260px;
 }
