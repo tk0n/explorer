@@ -47,7 +47,7 @@ angular.module('ark_explorer')
           if (isNaN(amount)) {
               return (0).toFixed(8);
           } else {
-              return (parseInt(amount) / 100000000);
+              return (parseInt(amount) / 100000000).toFixed (8).replace (/\.?0+$/, '');
           }
       };
   })
