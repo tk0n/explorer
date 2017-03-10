@@ -1047,8 +1047,8 @@ a.sort-order span.reverse:after {
 }
 
 .tx-id-list {
-  max-width: 380px;
+  max-width: 200px;
 }
 .tx-id-votes {
-  max-width: 260px;
+  max-width: 300px;
 }
