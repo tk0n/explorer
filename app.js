@@ -17,7 +17,7 @@ app.exchange = new utils.exchange(config);
 app.knownAddresses = new utils.knownAddresses();
 app.orders = new utils.orders(config, client);
 
-app.set('version', '0.3');
+app.set('version', require('./package.json').version);
 app.set('strict routing', true);
 app.set('ark address', 'http://' + config.ark.host + ':' + config.ark.port);
 app.set('freegeoip address', 'http://' + config.freegeoip.host + ':' + config.freegeoip.port);
