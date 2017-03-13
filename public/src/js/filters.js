@@ -146,7 +146,7 @@ angular.module('ark_explorer')
             return smallAddr(fullId)
         };
     })
-    .filter('txSender', function (txTypes) {
+    .filter('txSender', function () {
         return function (tx) {
             if (tx.senderDelegate && tx.senderDelegate.username)
                 return tx.senderDelegate.username
@@ -160,6 +160,8 @@ angular.module('ark_explorer')
     })
     .filter('txRecipient', function (txTypes) {
         return function (tx) {
+            if (tx.type !== 0)
+                return txTypes[parseInt(tx.type)]
             if (tx.recipientDelegate && tx.recipientDelegate.username)
                 return tx.senderDelegate.username
             if (tx.recipientUsername)
