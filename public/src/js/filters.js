@@ -1,5 +1,9 @@
 'use strict';
 
+function smallAddr(fullAddr) {
+    return fullAddr.slice(0, 5) + ' ... ' + fullAddr.slice(-5)
+}
+
 angular.module('ark_explorer')
   .filter('approval', function () {
       return function (votes) {
@@ -137,20 +141,35 @@ angular.module('ark_explorer')
           return d.getFullYear() + '/' + month + '/' + day + ' ' + h + ':' + m + ':' + s;
       };
   })
-  .filter('txSender', function () {
-      return function (tx) {
-          return ((tx.senderDelegate && tx.senderDelegate.username) || tx.senderUsername || (tx.knownSender && tx.knownSender.owner) || tx.senderId);
-      };
-  })
-  .filter('txRecipient', function (txTypes) {
-      return function (tx) {
-          if (tx.type === 0) {
-              return ((tx.recipientDelegate && tx.recipientDelegate.username) || tx.recipientUsername || (tx.knownRecipient && tx.knownRecipient.owner) || tx.recipientId);
-          } else {
-              return (txTypes[parseInt(tx.type)]);
-          }
-      };
-  })
+    .filter('smallId', function () {
+        return function (fullId) {
+            return smallAddr(fullId)
+        };
+    })
+    .filter('txSender', function (txTypes) {
+        return function (tx) {
+            if (tx.senderDelegate && tx.senderDelegate.username)
+                return tx.senderDelegate.username
+            if (tx.senderUsername)
+                return tx.senderUsername
+            if (tx.knownSender && tx.knownSender.owner)
+                return tx.knownSender.owner
+
+            return smallAddr(tx.senderId)
+        };
+    })
+    .filter('txRecipient', function (txTypes) {
+        return function (tx) {
+            if (tx.recipientDelegate && tx.recipientDelegate.username)
+                return tx.senderDelegate.username
+            if (tx.recipientUsername)
+                return tx.senderUsername
+            if (tx.knownRecipient && tx.knownRecipient.owner)
+                return tx.knownRecipient.owner
+
+            return smallAddr(tx.recipientId)
+        };
+    })
   .filter('txType', function (txTypes) {
       return function (tx) {
           return txTypes[parseInt(tx.type)];
