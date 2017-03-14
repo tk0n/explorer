@@ -163,7 +163,7 @@ angular.module('ark_explorer')
             if (tx.type !== 0)
                 return txTypes[parseInt(tx.type)]
             if (tx.recipientDelegate && tx.recipientDelegate.username)
-                return tx.senderDelegate.username
+                return tx.recipientDelegate.username
             if (tx.recipientUsername)
                 return tx.senderUsername
             if (tx.knownRecipient && tx.knownRecipient.owner)
