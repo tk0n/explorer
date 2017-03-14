@@ -8,7 +8,8 @@ var express = require('express'),
     routes = require('./api'),
     path = require('path'),
     cache = require('./cache'),
-    async = require('async');
+    async = require('async'),
+    serveIndex = require('serve-index');
 
 var app = express(), utils = require('./utils');
 
@@ -27,6 +28,8 @@ app.set('candles enabled', config.enableCandles);
 app.set('orders enabled', config.enableOrders);
 
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/snapshots', serveIndex(path.join(__dirname, 'public/snapshots')));
 
 app.locals.redis = client;
 app.use(function (req, res, next) {
