@@ -1,7 +1,7 @@
 'use strict';
 
 function smallAddr(fullAddr) {
-    return fullAddr.slice(0, 5) + ' ... ' + fullAddr.slice(-5)
+    return fullAddr.slice(0, 5) + '...' + fullAddr.slice(-5)
 }
 
 angular.module('ark_explorer')
