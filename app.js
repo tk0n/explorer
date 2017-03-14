@@ -29,7 +29,10 @@ app.set('orders enabled', config.enableOrders);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/snapshots', serveIndex(path.join(__dirname, 'public/snapshots')));
+app.use('/snapshots', serveIndex(path.join(__dirname, 'public/snapshots'), {
+    icons: true,
+    view: 'details',
+}));
 
 app.locals.redis = client;
 app.use(function (req, res, next) {
