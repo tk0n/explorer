@@ -21,18 +21,29 @@
         <span class="supply">&middot; <strong>Supply: </strong> {{blockStatus.supply | ark | number:0}}</span>
         <span class="ark-nethash">&middot; <strong>Nethash: </strong> {{blockStatus.nethash | nethash}}</span>
       </div>
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav">
 
-        <li>
-          <a href="/activityGraph">Activity Graph</a>
-        </li>
+        <li class="dropdown" dropdown>
+          <a href class="dropdown-toggle" dropdown-toggle role="button" aria-expanded="false">Tools <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
 
-        <li>
-          <a href="/delegateMonitor">Delegate Monitor</a>
-        </li>
+            <li>
+              <a href="/">Latest Activity</a>
+            </li>
+            <li>
+              <a href="/activityGraph">Activity Graph</a>
+            </li>
+            <li>
+              <a href="/delegateMonitor">Delegate Monitor</a>
+            </li>
+            <li>
+              <a href="/networkMonitor">Network Monitor</a>
+            </li>
+            <li>
+              <a href="/snapshots">Snapshots</a>
+            </li>
 
-        <li>
-          <a href="/networkMonitor">Network Monitor</a>
+          </ul>
         </li>
         
       </ul>
