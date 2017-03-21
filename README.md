@@ -64,7 +64,7 @@ Example:
         },
         "ark" : {
             "host" : "127.0.0.1",
-            "port" : 4000
+            "port" : 4001
         },
         "freegeoip" : {
             "host" : "127.0.0.1",
