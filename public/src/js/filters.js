@@ -59,7 +59,7 @@ angular.module('ark_explorer')
       return function (nethash) {
           if (nethash == "4befbd4cd1f2f10cbe69ac0b494b5ce070595ed23ee7abd386867c4edcdaf3bd") {
               return network='Testnet';
-          } else if (nethash == "ed14889723f24ecc54871d058d98ce91ff2f973192075c0155ba2b7b70ad2511")  {
+          } else if (nethash == "6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988")  {
 	      return network='Mainnet';
           } else {
 	      return network='Local';
