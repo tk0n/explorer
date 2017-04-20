@@ -7,7 +7,8 @@ var express = require('express'),
     cache   = require('./cache'),
     program = require('commander'),
     async   = require('async'),
-    packageJson = require('./package.json');
+    packageJson = require('./package.json'),
+    serveIndex = require('serve-index');
 
 var app = express(), utils = require('./utils');
 
@@ -51,6 +52,11 @@ app.use (function (req, res, next) {
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/snapshots', serveIndex(path.join(__dirname, 'public/snapshots'), {
+    icons: true,
+    view: 'details',
+}));
 
 app.locals.redis = client;
 app.use(function (req, res, next) {

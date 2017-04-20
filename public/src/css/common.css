@@ -205,11 +205,8 @@ a:hover {
 .navbar-default .navbar-nav>li>a {
   color: white;
   font-family: 'Roboto', 'Ubuntu', sans-serif;
-  margin-left: 1px;
-  padding-left: 25px;
-  padding-right: 25px;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  margin-left: 10px;
+  padding: 30px 20px;
 }
 
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus {
