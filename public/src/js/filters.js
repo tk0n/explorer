@@ -17,7 +17,7 @@ angular.module('lisk_explorer')
   .filter('epochStamp', function () {
       return function (d) {
           return new Date(
-              (((Date.UTC(2016, 4, 24, 17, 0, 0, 0) / 1000) + d) * 1000)
+              (((Date.UTC(2017,2,21,13,0,0,0) / 1000) + d) * 1000)
           );
       };
   })
