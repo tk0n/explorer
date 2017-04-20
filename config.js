@@ -10,7 +10,7 @@ config.port = 6040;      // Port to listen on
 
 // ARK node
 config.lisk.host = '127.0.0.1';
-config.lisk.port = 4000;
+config.lisk.port = 4001;
 
 // FreeGeoIP server
 config.freegeoip.host = '127.0.0.1';
