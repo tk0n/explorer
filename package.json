@@ -1,6 +1,6 @@
 {
   "name": "ark-explorer",
-  "version": "0.2",
+  "version": "0.2.0",
   "description": "Ark blockchain explorer",
   "repository": {
     "type": "git",
