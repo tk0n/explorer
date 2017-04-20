@@ -142,7 +142,7 @@ npm test -- test/api/transactions.js
 
 ## Authors
 - Guillaume Verbal <doweig@ark.io>
-- 4miners MQ
+- Mariusz Serek <mariusz@serek.net>
 - Isabella Dell <isabella@lisk.io>
 - Oliver Beddows <oliver@lisk.io>
 - Boris Povod <boris@crypti.me>
