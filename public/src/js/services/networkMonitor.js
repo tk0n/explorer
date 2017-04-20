@@ -257,7 +257,7 @@ var NetworkMap = function () {
     };
 };
 
-angular.module('lisk_explorer.tools').factory('networkMonitor',
+angular.module('ark_explorer.tools').factory('networkMonitor',
   function ($socket) {
       return function ($scope) {
           var networkMonitor = new NetworkMonitor($scope),

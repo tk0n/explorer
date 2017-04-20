@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lisk_explorer',[
+angular.module('ark_explorer',[
     'ngAnimate',
     'ngResource',
     'ngRoute',
@@ -8,21 +8,21 @@ angular.module('lisk_explorer',[
     'ui.bootstrap',
     'gettext',
     'monospaced.qrcode',
-    'lisk_explorer.system',
-    'lisk_explorer.socket',
-    'lisk_explorer.blocks',
-    'lisk_explorer.transactions',
-    'lisk_explorer.address',
-    'lisk_explorer.search',
-    'lisk_explorer.tools',
-    'lisk_explorer.currency'
+    'ark_explorer.system',
+    'ark_explorer.socket',
+    'ark_explorer.blocks',
+    'ark_explorer.transactions',
+    'ark_explorer.address',
+    'ark_explorer.search',
+    'ark_explorer.tools',
+    'ark_explorer.currency'
 ]);
 
-angular.module('lisk_explorer.system', []);
-angular.module('lisk_explorer.socket', []);
-angular.module('lisk_explorer.blocks', []);
-angular.module('lisk_explorer.transactions', []);
-angular.module('lisk_explorer.address', []);
-angular.module('lisk_explorer.search', []);
-angular.module('lisk_explorer.tools', ['naturalSort']);
-angular.module('lisk_explorer.currency', []);
+angular.module('ark_explorer.system', []);
+angular.module('ark_explorer.socket', []);
+angular.module('ark_explorer.blocks', []);
+angular.module('ark_explorer.transactions', []);
+angular.module('ark_explorer.address', []);
+angular.module('ark_explorer.search', []);
+angular.module('ark_explorer.tools', ['naturalSort']);
+angular.module('ark_explorer.currency', []);

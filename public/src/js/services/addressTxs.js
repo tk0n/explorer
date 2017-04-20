@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lisk_explorer.system').factory('addressTxs',
+angular.module('ark_explorer.system').factory('addressTxs',
   function ($http, $q) {
       return function (address, direction) {
           var lessMore = new LessMore($http, $q, {

@@ -4,7 +4,7 @@ function smallId(fullId) {
   return fullId.slice(0, 5) + '...' + fullId.slice(-5)
 }
 
-angular.module('lisk_explorer')
+angular.module('ark_explorer')
   .filter('approval', function () {
       return function (votes) {
           if (isNaN(votes)) {
