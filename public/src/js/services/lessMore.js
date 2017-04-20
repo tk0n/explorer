@@ -9,7 +9,7 @@ var LessMore = function ($http, $q, params) {
     this.key     = params.key     || '';
     this.offset  = params.offset  || 0;
     this.maximum = params.maximum || 2000;
-    this.limit   = params.limit   || 50;
+    this.limit   = params.limit   || 49;
 
     angular.forEach(['url', 'parent', 'key', 'offset', 'maximum', 'limit'], function (key) {
         delete params[key];
