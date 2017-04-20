@@ -84,7 +84,7 @@ angular.module('lisk_explorer')
       return function (nethash) {
           if (nethash === 'ce6b3b5b28c000fe4b810b843d20b971f316d237d5a9616dbc6f7f1118307fc6') {
               return 'Testnet';
-          } else if (nethash === '')  {
+          } else if (nethash === '6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988')  {
               return 'Mainnet';
           } else {
               return 'Local';
