@@ -1,6 +1,6 @@
 # Ark Blockchain Explorer
 
-Ark Explorer version 0.2 works in conjunction with the Ark Core API. It uses Redis for caching data and Freegeoip to parse IP geo-location data.
+Ark Explorer version 0.2.0 works in conjunction with the Ark Core API. It uses Redis for caching data and Freegeoip to parse IP geo-location data.
 
 [![Build Status](https://travis-ci.org/ArkEcosystem/Ark-explorer.svg?branch=development)](https://travis-ci.org/ArkEcosystem/Ark-explorer)
 
@@ -142,7 +142,7 @@ npm test -- test/api/transactions.js
 
 ## Authors
 - Guillaume Verbal <doweig@ark.io>
-- 4miners MQ
+- Mariusz Serek <mariusz@serek.net>
 - Isabella Dell <isabella@lightcurve.io>
 - Oliver Beddows <oliver@lightcurve.io>
 - Boris Povod <boris@crypti.me>

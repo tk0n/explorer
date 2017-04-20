@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lisk_explorer')
+angular.module('ark_explorer')
   .directive('scroll', function ($window) {
       return function (scope, element, attrs) {
           angular.element($window).bind('scroll', function () {

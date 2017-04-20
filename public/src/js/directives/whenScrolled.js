@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lisk_explorer')
+angular.module('ark_explorer')
   .directive('whenScrolled', function ($window) {
       return {
           restric: 'A',
