@@ -1,6 +1,10 @@
 'use strict';
 
 var Header = function ($rootScope) {
+    $rootScope.currency = {
+      symbol: 'ARK'
+    };
+
     this.updateBlockStatus = function (res) {
         if (res.success) {
             $rootScope.blockStatus = {
@@ -16,16 +20,26 @@ var Header = function ($rootScope) {
 
     this.updatePriceTicker = function (res) {
         if (res.success) {
-            $rootScope.btc_usd  = res.btc_usd;
-            $rootScope.ark_btc = res.ark_btc;
-            $rootScope.ark_usd = res.ark_usd;
+            $rootScope.currency.tickers = res.tickers;
+        }
+
+        // When ticker for user-stored currency is not available - switch to ARK temporarly
+        if ($rootScope.currency.symbol !== 'ARK' && (!$rootScope.currency.tickers || !$rootScope.currency.tickers.ARK || !$rootScope.currency.tickers.ARK[$rootScope.currency.symbol])) {
+            console.log ('Currency ' + $rootScope.currency.symbol + ' not available, fallback to ARK');
+            $rootScope.currency.symbol = 'ARK';
+        }
+    };
+
+    this.updateDelegateProposals = function (res) {
+        if (res.success) {
+            $rootScope.delegateProposals = res.proposals;
         } else {
-            $rootScope.btc_usd = $rootScope.ark_btc = $rootScope.ark_usd = 0.0;
+            $rootScope.delegateProposals = [];
         }
     };
 };
 
-angular.module('ark_explorer.system').factory('header',
+angular.module('lisk_explorer.system').factory('header',
   function ($rootScope, $socket) {
       return function ($scope) {
           var header = new Header($rootScope),
@@ -35,6 +49,11 @@ angular.module('ark_explorer.system').factory('header',
               if (res.status) { header.updateBlockStatus(res.status); }
               if (res.ticker) { header.updatePriceTicker(res.ticker); }
           });
+
+          ns.on('delegateProposals', function (res) {
+              if (res) { header.updateDelegateProposals(res); }
+          });
+
 
           $scope.$on('$destroy', function (event) {
               ns.removeAllListeners();

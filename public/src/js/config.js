@@ -1,7 +1,7 @@
 'use strict';
 
 // Setting up routes
-angular.module('ark_explorer').config(function ($routeProvider) {
+angular.module('lisk_explorer').config(function ($routeProvider) {
     $routeProvider.
     when('/', {
         templateUrl: '/views/index.html',
@@ -35,10 +35,10 @@ angular.module('ark_explorer').config(function ($routeProvider) {
         templateUrl : '/views/delegateMonitor.html',
         title: 'Delegate Monitor'
     })
-    // .when('/marketWatcher', {
-    //     templateUrl : '/views/marketWatcher.html',
-    //     title: 'Market Watcher'
-    // })
+    .when('/marketWatcher', {
+        templateUrl : '/views/marketWatcher.html',
+        title: 'Market Watcher'
+    })
     .when('/networkMonitor', {
         templateUrl : '/views/networkMonitor.html',
         title: 'Network Monitor'
@@ -50,12 +50,12 @@ angular.module('ark_explorer').config(function ($routeProvider) {
 });
 
 // Setting HTML5 location mode
-angular.module('ark_explorer')
+angular.module('lisk_explorer')
   .config(function ($locationProvider) {
       $locationProvider.html5Mode(true);
       $locationProvider.hashPrefix('!');
   })
-  .run(function ($rootScope, $route, $location, $routeParams, $anchorScroll, ngProgress, gettextCatalog) {
+  .run(function ($rootScope, $route, $location, $routeParams, $anchorScroll, $http, ngProgress, gettextCatalog) {
       gettextCatalog.currentLanguage = 'en';
       $rootScope.$on('$routeChangeStart', function () {
           ngProgress.start();
@@ -68,7 +68,13 @@ angular.module('ark_explorer')
           $rootScope.titleDetail = '';
           $rootScope.title = $route.current.title;
           $rootScope.isCollapsed = true;
-          $rootScope.currentAddr = null;
+
+          // Market Watcher
+          $http.get('/api/exchanges').then (function (result) {
+              if (result.data.success && result.data.enabled) {
+                $rootScope.marketWatcher = true;
+              }
+          });
 
           $location.hash($routeParams.scrollTo);
           $anchorScroll();

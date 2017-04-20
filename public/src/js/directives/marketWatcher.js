@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ark_explorer.tools')
+angular.module('lisk_explorer.tools')
   .directive('orders', function () {
       return {
           restrict: 'E',

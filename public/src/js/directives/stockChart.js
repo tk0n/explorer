@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ark_explorer.tools')
+angular.module('lisk_explorer.tools')
   .directive('stockChart', function ($timeout) {
       function StockChart (scope, elm, attr) {
           var self = this;
@@ -34,8 +34,8 @@ angular.module('ark_explorer.tools')
                       fromField: 'btcVolume',
                       toField: 'btcVolume'
                   }, {
-                      fromField: 'arkVolume',
-                      toField: 'arkVolume'
+                      fromField: 'liskVolume',
+                      toField: 'liskVolume'
                   }, {
                       fromField: 'numTrades',
                       toField: 'numTrades'

@@ -154,9 +154,9 @@ var NetworkMonitor = function ($scope) {
 
 var NetworkMap = function () {
     this.markers = {};
-    this.options = { center: [0, 0], zoom: 1, minZoom: 1, maxZoom: 10 };
+    this.options = { center: L.latLng(40, 0), zoom: 1, minZoom: 1, maxZoom: 10 };
     this.map     = L.map('map', this.options);
-    this.cluster = L.markerClusterGroup({ maxClusterRadius: 80 });
+    this.cluster = L.markerClusterGroup({ maxClusterRadius: 50 });
 
     L.Icon.Default.imagePath = '/img/leaflet';
 
@@ -257,7 +257,7 @@ var NetworkMap = function () {
     };
 };
 
-angular.module('ark_explorer.tools').factory('networkMonitor',
+angular.module('lisk_explorer.tools').factory('networkMonitor',
   function ($socket) {
       return function ($scope) {
           var networkMonitor = new NetworkMonitor($scope),

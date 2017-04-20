@@ -4,7 +4,7 @@ var Benchmark = require('benchmark'),
     suite = new Benchmark.Suite('api');
 
 var express = require('express'),
-    config = require('./config.json').configuration;
+    config = require('./config');
     config.enableExchange = false;
 
 var api = require('./lib/api'),
@@ -16,7 +16,7 @@ app.exchange = new utils.exchange(config);
 app.knownAddresses = new utils.knownAddresses();
 app.knownAddresses.load();
 
-app.set('ark address', 'http://' + config.ark.host + ':' + config.ark.port);
+app.set('lisk address', 'http://' + config.lisk.host + ':' + config.lisk.port);
 app.set('freegeoip address', 'http://' + config.freegeoip.host + ':' + config.freegeoip.port);
 
 ////////////////////////////////////////////////////////////////////////////////

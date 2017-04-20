@@ -9,7 +9,7 @@ var LessMore = function ($http, $q, params) {
     this.key     = params.key     || '';
     this.offset  = params.offset  || 0;
     this.maximum = params.maximum || 2000;
-    this.limit   = params.limit   || 49;
+    this.limit   = params.limit   || 50;
 
     angular.forEach(['url', 'parent', 'key', 'offset', 'maximum', 'limit'], function (key) {
         delete params[key];
@@ -146,7 +146,7 @@ LessMore.prototype.loadLess = function () {
     this.prevOffset();
 };
 
-angular.module('ark_explorer.system').factory('lessMore',
+angular.module('lisk_explorer.system').factory('lessMore',
   function ($http, $q) {
       return function (params) {
           return new LessMore($http, $q, params);

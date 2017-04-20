@@ -1,10 +1,10 @@
 'use strict';
 
-function smallAddr(fullAddr) {
-    return fullAddr.slice(0, 5) + '...' + fullAddr.slice(-5)
+function smallId(fullId) {
+  return fullId.slice(0, 5) + '...' + fullId.slice(-5)
 }
 
-angular.module('ark_explorer')
+angular.module('lisk_explorer')
   .filter('approval', function () {
       return function (votes) {
           if (isNaN(votes)) {
@@ -17,7 +17,7 @@ angular.module('ark_explorer')
   .filter('epochStamp', function () {
       return function (d) {
           return new Date(
-              (((Date.UTC(2017,2,21,13,0,0,0) / 1000) + d) * 1000)
+              (((Date.UTC(2016, 4, 24, 17, 0, 0, 0) / 1000) + d) * 1000)
           );
       };
   })
@@ -27,7 +27,7 @@ angular.module('ark_explorer')
           return 'Now!';
         }
         var minutes = Math.floor(seconds / 60);
-        var seconds = seconds - (minutes * 60);
+        seconds = seconds - (minutes * 60);
         if (minutes && seconds) {
           return minutes + ' min ' + seconds + ' sec';
         } else if (minutes) {
@@ -46,7 +46,7 @@ angular.module('ark_explorer')
           }
       };
   })
-  .filter('ark', function () {
+  .filter('lisk', function () {
       return function (amount) {
           if (isNaN(amount)) {
               return (0).toFixed(8);
@@ -55,15 +55,40 @@ angular.module('ark_explorer')
           }
       };
   })
+  .filter('currency', function (numberFilter, liskFilter) {
+      return function (amount, currency, decimal_places) {
+        var lisk = liskFilter (amount),
+            factor = 1;
+
+        if (currency.tickers && currency.tickers.ARK && currency.tickers.ARK[currency.symbol]) {
+          factor = currency.tickers.ARK[currency.symbol];
+        } else if (currency.symbol !== 'ARK') {
+          // Exchange rate not available for current symbol
+          return 'N/A';
+        }
+
+        if (decimal_places === undefined) {
+          switch (currency.symbol) {
+            case 'ARK':
+            case 'BTC':
+              return numberFilter ((lisk * factor), 8).replace (/\.?0+$/, '');
+            default:
+              return numberFilter ((lisk * factor), 2).replace (/\.?0+$/, '');
+          }
+        } else {
+          return numberFilter ((lisk * factor), decimal_places);
+        }
+      };
+  })
   .filter('nethash', function () {
       return function (nethash) {
-          if (nethash == "4befbd4cd1f2f10cbe69ac0b494b5ce070595ed23ee7abd386867c4edcdaf3bd") {
-              return network='Testnet';
-          } else if (nethash == "6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988")  {
-	      return network='Mainnet';
+          if (nethash === 'ce6b3b5b28c000fe4b810b843d20b971f316d237d5a9616dbc6f7f1118307fc6') {
+              return 'Testnet';
+          } else if (nethash === '')  {
+              return 'Mainnet';
           } else {
-	      return network='Local';
-	  }
+              return 'Local';
+          }
       };
   })
   .filter('round', function () {
@@ -89,7 +114,8 @@ angular.module('ark_explorer')
   })
   .filter('supplyPercent', function () {
       return function (amount, supply) {
-          if (isNaN(amount) || !(supply > 0)) {
+        var supply_check = (supply > 0);
+          if (isNaN(amount) || !supply_check) {
             return (0).toFixed(2);
           }
           return (amount / supply * 100).toFixed(2);
@@ -143,10 +169,10 @@ angular.module('ark_explorer')
   })
     .filter('smallId', function () {
         return function (fullId) {
-            return smallAddr(fullId)
+            return smallId(fullId)
         };
     })
-    .filter('txSender', function () {
+    .filter('txSender', function (txTypes) {
         return function (tx) {
             if (tx.senderDelegate && tx.senderDelegate.username)
                 return tx.senderDelegate.username
@@ -155,21 +181,19 @@ angular.module('ark_explorer')
             if (tx.knownSender && tx.knownSender.owner)
                 return tx.knownSender.owner
 
-            return smallAddr(tx.senderId)
+            return smallId(tx.senderId)
         };
     })
     .filter('txRecipient', function (txTypes) {
         return function (tx) {
-            if (tx.type !== 0)
-                return txTypes[parseInt(tx.type)]
             if (tx.recipientDelegate && tx.recipientDelegate.username)
                 return tx.recipientDelegate.username
             if (tx.recipientUsername)
-                return tx.senderUsername
+                return tx.recipientUsername
             if (tx.knownRecipient && tx.knownRecipient.owner)
                 return tx.knownRecipient.owner
 
-            return smallAddr(tx.recipientId)
+            return smallId(tx.recipientId)
         };
     })
   .filter('txType', function (txTypes) {
@@ -180,5 +204,16 @@ angular.module('ark_explorer')
   .filter('votes', function () {
       return function (a) {
           return (a.username || (a.knowledge && a.knowledge.owner) || a.address);
+      };
+  }).filter('proposal', function ($sce) {
+      return function (name, proposals) {
+          var p = _.find (proposals, function (p) {
+              return p.name === name.toLowerCase ();
+          });
+          if (p) {
+              return $sce.trustAsHtml('<a class="glyphicon glyphicon-user" href="https://forum.lisk.io/viewtopic.php?f=48&t=' + p.topic + '" title="' + _.escape (p.description) + '" target="_blank"></a> ' + name);
+          } else {
+              return $sce.trustAsHtml(name);
+          }
       };
   });

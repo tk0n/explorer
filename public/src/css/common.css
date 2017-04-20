@@ -21,14 +21,14 @@
 }
 
 html, body {
-  color: #2f3336;
+  color: #2F3336;
   font-family: 'Roboto', 'Ubuntu', sans-serif;
   height: 100%;
   /* The html and body elements cannot have any padding or margin. */
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-  color: #2f3336;
+  color: #2F3336;
   font-family: 'Roboto', 'Ubuntu', sans-serif;
 }
 
@@ -38,10 +38,13 @@ h1>small {
 
 a, a:visited, a:focus {
   color: #0288d1;
+  text-decoration: none;
 }
 
 a:hover {
-  color: #f89406;
+  color: #f57c00;
+  text-decoration: none;
+  transition: color 0.3s ease 0s;
 }
 
 /* Bootstrap fix for ui.bootstrap */
@@ -164,10 +167,6 @@ a:hover {
   background-color: #E8E8E9;
 }
 
-/*.table-responsive {
-  font-size: 11px;
-}*/
-
 #header {
   margin-left: 21px;
   margin-right: 21px;
@@ -195,10 +194,10 @@ a:hover {
 
 .navbar-default .navbar-toggle .icon-bar { background-color: white; }
 
-.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {background-color: #2f3336;}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {background-color: #2F3336;}
 
 .navbar-default {
-  background-color: #2f3336;
+  background-color: #2F3336;
   margin: 0;
   border: 0;
 }
@@ -206,8 +205,11 @@ a:hover {
 .navbar-default .navbar-nav>li>a {
   color: white;
   font-family: 'Roboto', 'Ubuntu', sans-serif;
-  margin-left: 10px;
-  padding: 30px 20px;
+  margin-left: 1px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus {
@@ -243,21 +245,20 @@ a:hover {
     margin-bottom: 1px;
   }
   .navbar-default .navbar-nav .open .dropdown-menu>li>a {
-    background-color: #080808;
-    color: white;
+    background-color: white;
+    color: #080808;
   }
   .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover {
-    background-color: #be9c77;
+    background-color: #27292A;
     color: white;
+  }
+  .navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse, .pre-scrollable {
+    max-height: none;
   }
 }
 
 .navbar-form .form-group {
   display: block;
-}
-
-.navbar-form {
-  margin-top: 20px;
 }
 
 @media (max-width: 1200px) {
@@ -276,18 +277,18 @@ a:hover {
 }
 
 .nav-tabs>li>a {
-  color: #2f3336;
+  color: #2F3336;
 }
 
 .nav-tabs.nav-justified>.active>a,
 .nav-tabs.nav-justified>.active>a:focus {
   color: white;
-  background-color: #0299eb;
+  background-color: #2F3336;
 }
 
 .nav-tabs.nav-justified>.active>a:hover {
   color: white;
-  background-color: #0288d1;
+  background-color: #27292A;
 }
 
 .nav-tabs.nav-justified>li>a:hover {
@@ -302,23 +303,17 @@ a:hover {
 .navbar-default .navbar-brand {
   color: white;
   padding: 10px;
-  height: 76px;
+  height: 100%;
 }
 
 .navbar-brand .logo {
-  background-image: url(/img/logo.png);
-  height: 55px;
+  height: 100%;
   width: 100px;
+  text-align: center;
 }
 
-@media only screen and (-Webkit-min-device-pixel-ratio: 1.5),
-       only screen and (-moz-min-device-pixel-ratio: 1.5),
-       only screen and (-o-min-device-pixel-ratio: 3/2),
-       only screen and (min-device-pixel-ratio: 1.5) {
-  .navbar-brand .logo {
-    background-image: url(/img/logo2x.png);
-    background-size: 100%;
-  }
+.navbar-brand .logo img {
+  height: 100%;
 }
 
 .navbar-form .form-control {
@@ -339,7 +334,10 @@ a:hover {
 
 #search-form { color: #5f696e; }
 
-#search-form #search { width: 275px; }
+#search-form #search { 
+  width: 275px;
+  line-height: normal;
+}
 
 #search { font-family: 'Roboto', 'Ubuntu', sans-serif; }
 
@@ -386,13 +384,12 @@ a:hover {
   background-color: #080808;
   border-radius: 3px;
   margin-left: 10px;
-  margin-top: 19px;
-  min-width: 320px;
-  min-height: 20px;
-  padding: 10px 0;
+  min-width: 389.375px;
+  min-height: 29px;
   font-size: 12px;
   color: #eee;
   text-align: center;
+  padding-top: 10px;
 }
 
 .col-gray {
@@ -453,7 +450,7 @@ a:hover {
 }
 
 .block-id {
-  background-color: #2f3336;
+  background-color: #2F3336;
   border: 3px solid white;
   margin: 0 auto;
   width: 165px;
@@ -580,13 +577,7 @@ a:hover {
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: .25em;
-}
-
-@media (max-width: 768px) {
-  .txvalues {
-    display: block;
-    margin: 5px;
-  }
+  display: block;
 }
 
 .txvalues-primary {
@@ -598,7 +589,7 @@ a:hover {
 }
 
 .txvalues-success {
-  background-color: #51a351;
+  background-color: #7CB342;
 }
 
 .txvalues-danger {
@@ -619,7 +610,7 @@ a:hover {
 
 /* Set the fixed height of the footer here */
 #footer {
-  background-color: #2f3336;
+  background-color: #2F3336;
   color: white;
   height: 48px;
   overflow: hidden;
@@ -641,7 +632,7 @@ a:hover {
 }
 
 #footer .col-right a {
-  color: #ccc;
+  color: #080808;
   margin-left: 10px;
 }
 
@@ -717,6 +708,21 @@ a:hover {
   top: 55px;
   width: 275px;
   z-index: 9999;
+}
+
+/*Pubkey mobile display*/
+
+.pk-mobile-display {
+    display: inline;
+    white-space:normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    width: 100%;
+}
+
+.pk-mobile-style {
+    border: 1px solid #D3D3D3;
+    padding: 7px;
 }
 
 /* Animations */
@@ -840,7 +846,7 @@ a:hover {
 }
 
 .tx-id {
-  background-color: #2f3336;
+  background-color: #2F3336;
   border: 3px solid white;
   margin: 0 auto;
   width: 165px;
@@ -1014,7 +1020,7 @@ a.v_highlight_more {
 /* Sort Order */
 
 a.sort-order {
-  color: #2f3336;
+  color: #2F3336;
 }
 
 a.sort-order:focus, .sort-order:hover {
@@ -1045,10 +1051,35 @@ a.sort-order span.reverse:after {
     line-height: 1.2;
     margin-bottom: 20px;
 }
-
-.tx-id-list {
-  max-width: 200px;
+.proposal-icon {
+    vertical-align: middle;
+    margin-top: -5px;
 }
-.tx-id-votes {
-  max-width: 300px;
+
+@media (min-width: 767px) {
+  .navbar-collapse.collapse.valign {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+  }
+  .navbar-right {
+    margin-left: auto;
+  }
+}
+
+.tx-id-list, .address-list {
+  max-width: 245px;
+}
+
+@media (max-width: 1200px) {
+  .tx-id-list, .address-list {
+    max-width: 180px;
+  }
+}
+
+@media only screen and (max-width: 995px) {
+  .tx-id-list, .address-list {
+    max-width: 100px;
+  }
 }

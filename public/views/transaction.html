@@ -11,7 +11,7 @@
       <div class="col-md-6 col-lg-5 text-right">
         <span data-ng-if="tx.confirmations" class="txvalues txvalues-success">{{tx.confirmations}} Confirmations</span>
         <span data-ng-if="!tx.confirmations" class="txvalues txvalues-danger">Unconfirmed Transaction!</span>
-        <span class="txvalues txvalues-primary">{{tx.amount | ark}} ARK</span>
+        <span class="txvalues txvalues-primary">{{tx.amount | currency:currency}} {{currency.symbol}}</span>
       </div>
     </div>
     <div class="hide_snavbar">
@@ -63,24 +63,21 @@
             <td class="text-right">{{tx.confirmations || 0}}</td>
           </tr>
           <tr>
-            <td><strong>Smartbridge</strong></td>
-            <td class="text-right">{{tx.vendorField}}</td>
-          </tr>
-          <tr>
             <td><strong>Amount</strong></td>
-            <td class="text-right">{{tx.amount | ark}} <span class="text-muted">ARK</span></td>
+            <td class="text-right">{{tx.amount | currency:currency}} <span class="text-muted">{{currency.symbol}}</span></td>
           </tr>
           <tr>
             <td><strong>Fee</strong></td>
-            <td class="text-right">{{tx.fee | ark}} <span class="text-muted">ARK</span></td>
-          </tr>
-          <tr>
-            <td><strong>USD equivalent</strong></td>
-            <td class="text-right">{{tx.usd | fiat}} <span class="text-muted">USD</span></td>
+            <td class="text-right">{{tx.fee | currency:currency}} <span class="text-muted">{{currency.symbol}}</span></td>
           </tr>
           <tr>
             <td><strong>Timestamp</strong></td>
             <td class="text-right">{{tx.timestamp | timestamp}}</td>
+          </tr>
+          <tr>
+            <td><strong>Vendor field </strong></td>
+            <td data-ng-if="tx.vendorField" class="text-right">{{tx.vendorField}}</a></td>
+            <td data-ng-if="!tx.vendorField" class="text-right">N/A</td>
           </tr>
           <tr>
             <td><strong>Block </strong></td>
@@ -116,19 +113,34 @@
         <div class="col-md-12">
             <span data-ng-repeat='v in tx.votes.deleted'>
               <span data-ng-if="!$last">
-                <a href="/address/{{v.delegate.addres}}">{{v.delegate.username || v.delegate.address}}</a>
+                <a href="/address/{{v.delegate.address}}">{{v.delegate.username || v.delegate.address}}</a>
                 <span class="text-muted">&bull;</span>
               </span>
               <span data-ng-if="$last">
-                <a href="/address/{{v.delegate.addres}}">{{v.delegate.username || v.delegate.address}}</a>
+                <a href="/address/{{v.delegate.address}}">{{v.delegate.username || v.delegate.address}}</a>
               </span>
             </span>
         </div>
       </div>
     </div>
     <h2>Details</h2>
-    <div class="block-tx" data-ng-if="tx.id">
-      <div data-ng-include src="'/views/transaction/tx.html'"></div>
-    </div>
+	<div id="table-mobile" class="table-responsive">
+		<table class="table">
+			<thead>
+			  <tr>
+					<th>Transaction ID</th>
+					<th>Date</th>
+					<th>Sender</th>
+					<th>Recipient</th>
+					<th>Amount</th>
+					<th>Fee</th>
+					<th>Confirmations</th>
+			  </tr>
+			</thead>
+			<tbody>
+				<tr data-ng-if="tx.id" data-ng-include="'/views/transaction/tx.html'"></tr>
+			</tbody>
+		</table>
+	</div>
   </div>
 </section>

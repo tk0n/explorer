@@ -2,18 +2,25 @@
 .nav-pills>li.active>a:hover,
 .nav-pills>li.active>a:focus {
   color: #fff;
-  background-color: #2f3336;
+  background-color: #2F3336;
 }
 
 .nav-pills>li>a,
 .nav-pills>li>a:hover,
 .nav-pills>li>a:focus {
-  color: #2f3336;
+  color: #2F3336;
   background-color: white;
+}
+.nav-pills>li {
+    width: 49%;
+}
+
+div.tooltip-inner {
+    max-width: 500px;
 }
 
 .tab-content {
-  padding-top: 50px;
+  /*padding-top: 50px;*/
 }
 
 .big-details span.total-delegates {
@@ -38,15 +45,15 @@
 }
 
 .forging-total.green {
-  background-color: #51a351;
+  background-color: #7CB342;
 }
 
 .forging-total.orange {
-  background-color: #f89406;
+  background-color: #f57c00;
 }
 
 .forging-total.red {
-  background-color: #bd362f;
+  background-color: #d32f2f;
 }
 
 .progress-bar-forging {
@@ -72,37 +79,41 @@
 }
 
 .forging-status.green {
-  color: #51a351;
+  color: #7CB342;
 }
 
 .tooltip-green .tooltip-inner {
-  background-color: #51a351;
+  background-color: #7CB342;
 }
 
 .tooltip-green.left .tooltip-arrow {
-  border-left-color: #51a351;
+  border-left-color: #7CB342;
 }
 
 .forging-status.orange {
-  color: #f89406;
+  color: #f57c00;
 }
 
 .tooltip-orange .tooltip-inner {
-  background-color: #f89406;
+  background-color: #f57c00;
 }
 
 .tooltip-orange.left .tooltip-arrow {
-  border-left-color:  #f89406;
+  border-left-color:  #f57c00;
 }
 
 .forging-status.red {
-  color: #bd362f;
+  color: #d32f2f;
 }
 
 .tooltip-red .tooltip-inner {
-  background-color: #bd362f;
+  background-color: #d32f2f;
 }
 
 .tooltip-red.left .tooltip-arrow {
-  border-left-color:  #bd362f;
+  border-left-color:  #d32f2f;
+}
+
+.dm-address, .dm-tx-id {
+  max-width: 210px;
 }

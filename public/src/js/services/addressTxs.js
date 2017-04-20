@@ -1,13 +1,14 @@
 'use strict';
 
-angular.module('ark_explorer.system').factory('addressTxs',
+angular.module('lisk_explorer.system').factory('addressTxs',
   function ($http, $q) {
-      return function (address) {
+      return function (address, direction) {
           var lessMore = new LessMore($http, $q, {
-              url     : '/api/getTransactionsByAddress',
-              parent  : 'address',
-              key     : 'transactions',
-              address : address
+              url       : '/api/getTransactionsByAddress',
+              parent    : 'address',
+              key       : 'transactions',
+              address   : address,
+              direction : direction
           });
 
           lessMore.loadMore = function () {
