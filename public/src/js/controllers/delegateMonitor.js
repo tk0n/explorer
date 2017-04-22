@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lisk_explorer.tools').controller('DelegateMonitor',
+angular.module('ark_explorer.tools').controller('DelegateMonitor',
   function (delegateMonitor, orderBy, $scope, $rootScope, $http) {
       delegateMonitor($scope);
 

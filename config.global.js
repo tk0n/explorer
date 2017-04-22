@@ -1,7 +1,7 @@
 'use strict';
 
 var config = {};
-config.lisk = {};
+config.ark = {};
 config.freegeoip = {};
 config.redis = {};
 config.proposals = {};

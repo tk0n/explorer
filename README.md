@@ -1,6 +1,6 @@
 # Ark Blockchain Explorer
 
-Ark Explorer version 0.2 works in conjunction with the Ark Core API. It uses Redis for caching data and Freegeoip to parse IP geo-location data.
+Ark Explorer version 0.2.0 works in conjunction with the Ark Core API. It uses Redis for caching data and Freegeoip to parse IP geo-location data.
 
 [![Build Status](https://travis-ci.org/ArkEcosystem/Ark-explorer.svg?branch=development)](https://travis-ci.org/ArkEcosystem/Ark-explorer)
 
@@ -142,9 +142,9 @@ npm test -- test/api/transactions.js
 
 ## Authors
 - Guillaume Verbal <doweig@ark.io>
-- 4miners MQ
-- Isabella Dell <isabella@lisk.io>
-- Oliver Beddows <oliver@lisk.io>
+- Mariusz Serek <mariusz@serek.net>
+- Isabella Dell <isabella@lightcurve.io>
+- Oliver Beddows <oliver@lightcurve.io>
 - Boris Povod <boris@crypti.me>
 
 ## License
@@ -152,7 +152,7 @@ npm test -- test/api/transactions.js
 The MIT License (MIT)
 
 Copyright © 2017 Ark
-Copyright © 2017 Lisk
+Copyright © 2016-2017 Lisk Foundation
 Copyright © 2015 Crypti
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:

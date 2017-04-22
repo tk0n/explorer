@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lisk_explorer.tools')
+angular.module('ark_explorer.tools')
   .directive('peers', function (orderBy) {
       return {
           restrict: 'E',

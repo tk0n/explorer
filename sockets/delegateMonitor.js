@@ -218,7 +218,7 @@ module.exports = function (app, connectionHandler, socket) {
         async.waterfall([
             function (callback) {
                 request.get({
-                    url : app.get('lisk address') + '/api/blocks?orderBy=height:desc&limit=' + limit,
+                    url : app.get('ark address') + '/api/blocks?orderBy=height:desc&limit=' + limit,
                     json : true
                 }, function (err, response, body) {
                     if (err || response.statusCode !== 200) {

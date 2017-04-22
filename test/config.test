@@ -9,8 +9,8 @@ config.host = '0.0.0.0'; // Interface to listen on, 0.0.0.0 to listen on all ava
 config.port = 6040;      // Port to listen on
 
 // ARK node
-config.lisk.host = '127.0.0.1';
-config.lisk.port = 4000;
+config.ark.host = '127.0.0.1';
+config.ark.port = 4000;
 
 // FreeGeoIP server
 config.freegeoip.host = '127.0.0.1';

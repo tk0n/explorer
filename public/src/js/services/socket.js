@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lisk_explorer.socket').factory('$socket',
+angular.module('ark_explorer.socket').factory('$socket',
   function ($location, $rootScope) {
     return function (namespace) {
           var socket = io($location.host() + ':' + $location.port() + namespace, { 'forceNew': true });
