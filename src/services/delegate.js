@@ -151,21 +151,6 @@ class DelegateService {
           })
         })
       })
-      // Rounds
-      .then(delegates => {
-        return this.nextForgers().then(nextForgers => {
-          return delegates.map(delegate => {
-            const delegateIndex = nextForgers.findIndex(
-              d => d === delegate.publicKey
-            )
-
-            delegate.forgingTime = delegateIndex * 8
-            delegate.isRoundDelegate = delegateIndex !== -1
-
-            return delegate
-          })
-        })
-      })
       // Forging Status
       .then(delegates => {
         return block.height(status).then(height => {
